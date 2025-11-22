@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merry Christmas Everyone ❤</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #playMusicBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: gold;
+      color: red;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    #playMusicBtn:hover {
+      background-color: red;
+      color: white;
+      transform: scale(1.1);
+    }
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #00111f, #000);
+    }
+    .title {
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">🎄 Merry Christmas Everyone ❤</h1>
+  <canvas id="treeCanvas"></canvas>
+
+  <!-- 🎶 Background Music -->
+  <audio id="bgMusic" 
+         src="D:\christmas\video\christ.mp3" 
+         loop></audio>
+
+  <button id="playMusicBtn">▶ Play Music</button>
+
+  <script>
+    const bgMusic = document.getElementById("bgMusic");
+    const playBtn = document.getElementById("playMusicBtn");
+
+    playBtn.addEventListener("click", () => {
+      bgMusic.volume = 0.6;
+      bgMusic.play()
+      .then(() => {
+        
+        playBtn.disabled = true;
+        playBtn.style.opacity = "0.6";
+      })
+      .catch(err => {
+        alert("Error: Unable to play audio.\nPlease check the file path.");
+        console.error(err);
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
